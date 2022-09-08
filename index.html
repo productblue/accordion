@@ -6,70 +6,311 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+
   <title>Frontend Mentor | FAQ Accordion Card</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
+    .attribution { font-size: 11px; text-align: center; margin-top: 30px;}
     .attribution a { color: hsl(228, 45%, 44%); }
 
     *{
-      font-size: 12px;
+      font-family:'Kumbh Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: hsl(238, 29%, 16%);
     }
+
+    body{
+      background-image: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-y: scroll;
+      position: relative;
+    }
+
+    .card{
+      display: flex;
+      z-index: 1;
+      flex-direction: column;
+      background-color: white;
+      border-radius: 15px;
+      width: 85%;
+      height: auto;
+      margin: 0 auto;
+      padding: 25px;
+      box-shadow: 0 20px 40px hsl(237, 12%, 33%);
+    }
+
+    .content{
+      display: flex;
+      flex-direction: column;
+      padding-top: 7em;
+    }
+    
+
+    .image-1{
+      position: absolute;
+      min-height: 150px;
+      margin-right: 3.5em; /* it seems that i can't use flexbox centering methods due to absolute/relative, used this tentatively */
+      margin-top: -9.25em; /* it seems that i can't use flexbox centering methods, used this tentatively */
+    }
+
+    .image-2{
+      display: none;
+    }
+
+    .image-3{
+      display: none;
+    }
+
+    h1{
+      margin: 0 auto 0.5em;
+    }
+
+    .QA{
+      display: grid;
+      grid-template-columns: auto repeat(1, 1fr);
+      transition: height 2s;
+    }
+
+    .arrow{
+      align-self: center;
+      justify-self: right;
+    }
+
+    .line{
+      border: 1px solid hsl(240, 5%, 91%);
+    }
+
+    p{
+      font-size: 12px;
+      font-weight: 400;
+
+    }
+
+    .dropdown{
+      margin: 1.5em 0;
+    }
+
+    .answer{
+      color: hsl(240, 6%, 50%);
+      margin: 0 0 1em;
+    }
+
+    .answerToggle{
+      display: none;
+      transition: height 2s;
+    }
+
+    .arrowReverse{
+      transform: rotate(180deg);
+    }
+
+    .answerBold{
+      font-weight: 700;
+    }
+
+    .dropdown:hover{
+      color: hsl(14, 88%, 65%);
+    }
+
+    .QA:hover{
+      cursor: pointer;
+    }
+
+
+    @media screen and (min-width: 446px) {
+      .card{
+        flex-direction: row;
+        overflow: hidden;
+        padding: 50px;
+        align-items: center;
+        justify-content: flex-end;
+        width: 75%;
+        height: auto;
+      }
+      
+      h1{
+        margin-left: 0;
+      }
+
+      .content{
+        width: 50%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+
+      }
+
+      .content-text{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
+      }
+
+      .img-container{
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+      }
+
+      .image-1{
+        display: none;
+      }
+
+      .image-2{
+        display: inline;
+        min-width: 350px;
+        height: auto;
+        transform: translate(-130px);
+        z-index: 2;
+      }
+
+      .image-3{
+        position: absolute;
+        display: inline;
+        min-width: 150px;
+        height: auto;
+        transform: translate(-30px, 330px);
+
+      }
+
+    }
+
 
   </style>
 </head>
-<h1>FAQ</h1>
+
 <body>
-  <div>
-    <p class="dropdown">
-      How many team members can I invite?
-    </p>
-    <p class="answer">
-      You can invite up to 2 additional users on the Free plan. There is no limit on 
-      team members for the Premium plan.
-    </p>
-  </div>
+  <main>
+    <div class="img-container-outside">
+      <img class="image-3" src="images\illustration-box-desktop.svg" alt="">
+    </div>
+    <div class="card">
 
-  <div>
-    <p class="dropdown">
-      What is the maximum file upload size?
-    </p>
-    <p class="answer">
-      No more than 2GB. All files in your account must fit your allotted storage space.
-    </p>
-  </div>
+      <div class="img-container">
+        <img class="image-1" src="images\illustration-woman-online-mobile.svg" alt="">
+        <img class="image-2" src="images\illustration-woman-online-desktop.svg" alt="">
+      </div>
 
-  <div>
-    <p class="dropdown">
-      How do I reset my password?
-    </p>
-    <p class="answer">
-      Click “Forgot password” from the login page or “Change password” from your profile page.
-      A reset link will be emailed to you.
-    </p>
-  </div>
+      <div class="content">
+        <h1>FAQ</h1>
 
-  <div>
-    <p class="dropdown">
-      Can I cancel my subscription?
-    </p>
-    <p class="answer">
-      Yes! Send us a message and we’ll process your request no questions asked.
-    </p>
-  </div>
-
-
-  <div>
-    <p class="dropdown">
-      Do you provide additional support?
-    </p>
-    <p class="answer">Chat and email support is available 24/7. Phone lines are open during normal business hours.</p>
-  </div>
+        <div class="content-text">
+          <div>
+            <div class="QA" onclick="expandButton(this.id)" id="QA-1">
+              <p class="dropdown question-1" id="dropQuestion-1">
+                How many team members can I invite?
+              </p>
+              <img class="arrow" id="answerArrow-1" src="images\icon-arrow-down.svg" alt="">
+            </div>
   
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+            <p class="answer answerToggle answer-1" id="dropAnswer-1">
+              You can invite up to 2 additional users on the Free plan. There is no limit on 
+              team members for the Premium plan.
+            </p>
+          </div>
+  
+          <hr class="line line1">
+  
+          <div>
+            <div class="QA" onclick="expandButton(this.id)" id="QA-2">
+              <p class="dropdown question-2" id="dropQuestion-2">
+                What is the maximum file upload size?
+              </p>
+              <img class="arrow" id="answerArrow-2" src="images\icon-arrow-down.svg" alt="">
+            </div>
+  
+            <p class="answer answerToggle answer-2" id="dropAnswer-2">
+              No more than 2GB. All files in your account must fit your allotted storage space.
+            </p>
+          </div>
+  
+          <hr class="line line2">
+  
+          <div>
+            <div class="QA" onclick="expandButton(this.id)" id="QA-3">
+              <p class="dropdown question-3" id="dropQuestion-3">
+                How do I reset my password?
+              </p>
+              <img class="arrow" id="answerArrow-3" src="images\icon-arrow-down.svg" alt="">
+            </div>
+  
+            <p class="answer answerToggle answer-3" id="dropAnswer-3">
+              Click “Forgot password” from the login page or “Change password” from your profile page.
+              A reset link will be emailed to you.
+            </p>
+          </div>
+  
+          <hr class="line line3">
+  
+          <div>
+            <div class="QA" onclick="expandButton(this.id)" id="QA-4">
+              <p class="dropdown question-4" id="dropQuestion-4">
+                Can I cancel my subscription?
+              </p>
+              <img class="arrow" id="answerArrow-4" src="images\icon-arrow-down.svg" alt="">
+            </div>
+  
+            <p class="answer answerToggle answer-4" id="dropAnswer-4">
+              Yes! Send us a message and we’ll process your request no questions asked.
+            </p>
+          </div>
+  
+          <hr class="line line4">
+  
+          <div>
+            <div class="QA" onclick="expandButton(this.id)" id="QA-5">
+              <p class="dropdown question-5" id="dropQuestion-5">
+                Do you provide additional support?
+              </p>
+              <img class="arrow" id="answerArrow-5" src="images\icon-arrow-down.svg" alt="">
+            </div>
+  
+            <p class="answer answerToggle answer-5" id="dropAnswer-5">
+              Chat and email support is available 24/7. Phone lines are open during normal business hours.
+            </p>
+          </div>
+        
+          <hr class="line line1">
+        </div>
+        
+
+      </div>
+      
+
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Andrew</a>.
+    </div>
+  </footer>
+
 </body>
+
+<script>
+
+  function expandButton(clicked_id) {
+    const idNumber = clicked_id.split("-").pop()
+
+    document.getElementById(`dropAnswer-${idNumber}`).classList.toggle('answerToggle'); 
+    document.getElementById(`answerArrow-${idNumber}`).classList.toggle('arrowReverse');
+    document.getElementById(`dropQuestion-${idNumber}`).classList.toggle('answerBold');
+  }
+
+</script>
+
 </html>
